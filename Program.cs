@@ -10,17 +10,20 @@ namespace ArrayListe
         {
             static void Main(string[] args)
             {
-                Person[] pers = new Person[4];
-                pers[0] = new Person() { Name = "[0] Planton", City = "München" };
-                pers[1] = new Person() { Name = "[1] Mehmet", City = "Berlin" };
-                pers[2] = new Person() { Name = "[2] Aladin", City = "Bremen" };
-                pers[3] = new Person() { Name = "[3] Frank", City = "Frankfurt" };
-                ArrayList arrlist1 = new ArrayList();
+                Person[] pers = new Person[5];
+                pers[0] = new Person() { Name = "[0] Planton", City = "München", Age = 30 };
+                pers[1] = new Person() { Name = "[1] Mehmet", City = "Berlin" , Age =25 };
+                pers[2] = new Person() { Name = "[2] Aladin", City = "Bremen", Age = 35 };
+                pers[3] = new Person() { Name = "[3] Frank", City = "Frankfurt" , Age= 19 };
+                pers[4] = new Person() { Name = "[4] Scubi", City = "Hamburg" , Age = 26 };
+                ArrayList arrlist = new ArrayList(4);
                 
 
-                ArrayList arrlist = new ArrayList();
-
+               
+                
                 List<Person> pliste = new List<Person>();
+                arrlist.AddRange(pers);
+                
 
                 List<int> ages = new List<int>() { 18, 20, 17, 28, 23 };
                 int ai = ages.Count-1;
@@ -30,17 +33,17 @@ namespace ArrayListe
                     Console.WriteLine(ages[ai]);
                     ai--;    
                 }
-               
-                ages.Sort();
-             
-                pliste.Sort();
-                int pp = pers.GetLength(0)-1;
+          
+                int pp = pers.Length -1;
                 foreach (Person p in pers)
-
                 {
-                    Console.WriteLine(pers[pp].Name, pers[pp].City);
+                    Console.WriteLine(pers[pp].Name);
                     pp--;
                 }
+                pp = pers.Length - 1;
+                    Console.WriteLine(pers[pp].Name, pers[pp].City);
+                  
+                
 
                 pliste.AddRange(pers);
                 Console.WriteLine("PListe enthält :\n{0}", pliste.Count);
@@ -59,20 +62,19 @@ namespace ArrayListe
                     Console.WriteLine(p.Name + " " + p.City);
                 }
 
-                arrlist.Sort();
-                pp = pliste.Count - 1;
-                foreach (Person p in pliste)
-                {
-                    Console.WriteLine("Arrlist sortiert: {0} ", arrlist[pp - 0]);
-                    pp--;
-                }
                 
-                arrlist.Clear();
+                pp = pers.Length - 1;
+
+
+                
                 Console.WriteLine("ArrList wurde gecleart enthält jetzt Elemente:  {0} ", arrlist.Count);
                 Console.WriteLine("ArrList reserviert den Speicher für Elemente {0}: " , arrlist.Capacity);
                 Console.WriteLine("Pers: {0}", pers.GetLength(0));
-                Console.ReadLine();
-                
+
+                //Destruktor
+
+                GC.Collect();
+
             }
             internal class Person
             {
